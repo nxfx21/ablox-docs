@@ -1,196 +1,174 @@
-# Frequently Asked Questions
+# FAQ
 
-Common questions about AppleBlox.
-
-## General Questions
-
-### Is AppleBlox free?
-
-Yes! AppleBlox is completely free and open-source under GPL-3.0 license.
-
-### Is AppleBlox safe?
-
-Yes. The source code is public on GitHub. You can review it yourself or build from source.
-
-### Will I get banned for using AppleBlox?
-
-AppleBlox doesn't modify game files or provide unfair advantages. Mods are client-side visual changes only. Many users have used it safely for months.
+## General
 
 ### Does AppleBlox work on Windows or Linux?
 
-No, AppleBlox is macOS-only. For Windows, check out [Bloxstrap](https://github.com/pizzaboxer/bloxstrap).
+No. AppleBlox is macOS-only. The application uses many OSX-only utilities that would be hard to adapt on other operating systems.
 
-### Can I use AppleBlox and official Roblox together?
+For Windows, check out [Bloxstrap](https://github.com/pizzaboxer/bloxstrap), the project that inspired AppleBlox. For Linux, you can use [Sober](https://sober.vinegarhq.org/).
 
-Yes! You can have both installed. Use AppleBlox to launch for extra features, or launch Roblox directly for vanilla experience.
+### Which macOS versions does AppleBlox support?
 
-### Does AppleBlox collect my data?
+AppleBlox requires macOS 10.13 (High Sierra), although macOS 13+ is recommended. If you're using a version older than macOS 11, you can access AppleBlox through your web browser using the dedicated button to avoid a critical bug affecting the desktop app.
 
-No. AppleBlox doesn't collect, transmit, or store any personal data. Everything stays on your Mac.
+### What is arm64 and x64?
 
-## Installation & Setup
+- **arm64** is for Apple Silicon chips (M1, M2, M3, M4, etc.). These are the "M" series chips.
+- **x64** is for older Intel-based Macs. These are the devices that don't use the "M" series chips.
 
-### Which version should I download?
+To find out which you have, click the Apple logo at the top left of your screen and choose "About This Mac."
 
-- **Apple Silicon (M1/M2/M3/M4)**: Download arm64
-- **Intel Mac**: Download x64
-- **Not sure**: Download universal (works on both)
+### Is my Roblox cookie safe?
 
-### AppleBlox says "damaged and can't be opened"
+Your `.ROBLOSECURITY` cookie is:
 
-macOS security is blocking downloaded apps. Remove quarantine:
+- Stored in the **macOS Keychain** (encrypted, local to your device).
+- Only sent to official `roblox.com` domains.
+- Automatically **redacted from log files** to prevent accidental leaks.
+- Never stored in plaintext anywhere on disk.
 
-```bash
-xattr -cr /Applications/AppleBlox.app
-```
+### Do I need a macOS admin account?
 
-### Do I need to install Roblox separately?
+No. AppleBlox works with standard macOS user accounts. No admin privileges are required for normal usage.
 
-No! AppleBlox can download and install Roblox for you. Just click the Install button.
+### Can I get banned for using AppleBlox?
 
-### Can I move AppleBlox after installing?
+AppleBlox does not inject code into Roblox or modify game behavior at runtime. It replaces resource files (textures, fonts) and writes configuration flags, the same mechanisms Roblox itself uses.
 
-Keep it in `/Applications/` for best compatibility. Some features (like icon changing) require it to be in Applications folder.
+### Why do I see a newer version available when I already have the latest?
+
+The newer versions you're seeing are **development builds**, which are typically less stable than official releases. While they include the latest features, they may contain bugs. You can download development builds from the [nightly builds](https://appleblox.com/download/dev).
+
+### Why are features removed from AppleBlox?
+
+Features may be removed for two main reasons:
+
+1. The feature doesn't work properly anymore.
+2. Roblox has removed or changed something it depended on.
+
+FastFlag presets are settings created by Roblox engineers for Roblox's internal use, not by AppleBlox. Roblox can remove or modify them at any time.
 
 ### How do I update AppleBlox?
 
-Download the latest version and replace the old app in Applications folder. Your settings and mods are preserved (stored in Library).
+Download the latest DMG from the [GitHub releases page](https://github.com/AppleBlox/appleblox/releases) and replace the existing app in your Applications folder. Your settings, mods, and account data are stored separately in `~/Library/Application Support/AppleBlox/` and won't be affected.
 
-## Features
+### How do I export my settings?
 
-### How do I enable multi-instance?
+In AppleBlox, press `Commmand + P`. This will open a dialog prompting you to export your settings.
 
-Behavior panel > Enable "Multi-Instance" toggle > Click "New Instance" button to open additional windows.
+The exported `.zip` file contains all your configs and logs, which is also useful when reporting bugs.
 
-### Can I use custom FastFlags?
+### Where is my data stored?
 
-Yes! Engine panel > FastFlags Editor. But be careful - wrong flags can break Roblox.
+All AppleBlox data lives in `~/Library/Application Support/AppleBlox/`:
 
-### How do I add custom fonts to Roblox?
+| Path | Contents |
+|------|----------|
+| `mods/` | Your installed mods |
+| `cache/` | Mod backups, font cache, game cache |
+| `logs/` | Application log files |
+| `config/` | Settings JSON files |
+| `icons/` | Custom app icons |
 
-Mods panel > Built-in Modifications > Choose Font File > Select your .ttf/.otf/.ttc file.
+See [File Locations](/reference/file-locations) for a full reference.
 
-### Can I create my own icon?
+### How do I report a bug or suggest a feature?
 
-Yes! Create or convert an icon to .icns format, then Appearance panel > Upload Icon.
+Join the [AppleBlox Discord server](https://discord.gg/appleblox) or open an issue on the [GitHub repository](https://github.com/AppleBlox/appleblox/issues).
 
-### Does Discord RPC work with all games?
+## Installation Issues
 
-Yes, but it shows generic "Playing Roblox" for most games. Some games with Bloxstrap SDK support can customize the presence.
+### I can't open the app
+
+There are several macOS Gatekeeper errors you might encounter:
+
+**"macOS cannot verify the developer of AppleBlox"**
+
+1. Click the Apple menu and open **System Settings**.
+2. Click **Privacy & Security** in the sidebar.
+3. Scroll to the Security section and click **Open**.
+4. Click **Open Anyway**.
+
+::: tip
+The "Open Anyway" button is only available for about an hour after you try to open the app. If you missed it, try opening the app again first.
+:::
+
+**"AppleBlox Not Opened"** or **"App Is Damaged"**
+
+This is caused by macOS Gatekeeper placing the app in quarantine. To fix it:
+
+1. Press **Cmd + Space**, type "terminal", and press **Enter**.
+2. Copy and paste this command:
+   ```bash
+   curl https://appleblox.com/helper | bash
+   ```
+3. Press **Enter**.
+
+AppleBlox should launch automatically after completing these steps. You can also read the `Install Guide.rtf` file inside the DMG if you continue having issues.
+
+Alternatively, you can right-click on the app and select "Open" from the context menu.
+
+## Performance
+
+### Why is my game lagging when using AppleBlox?
+
+There are three main reasons:
+
+1. **Hardware limitations** - If your computer is older or has lower specs, you may experience lag. FastFlags are development features used by Roblox engineers. They're not magic FPS boosters.
+2. **AppleBlox issue** - If you have a capable computer but still experience lag, please report the bug on the [Discord server](https://discord.gg/appleblox).
+
+::: warning
+Do not copy/paste flags you don't understand, especially massive lists of "FPS" flags that YouTubers often promote. Many of these are placebo effects at best, and might contain invalid flags that Roblox has deprecated.
+:::
+
+### Best graphics API for performance
+
+**For Apple Silicon Macs (M1/M2/M3/M4):** The best Graphics API for performance is **Metal**. OpenGL allows you to go above the 240 fps limit, but will negatively impact your performance.
+
+## FastFlags
+
+### Why don't my FastFlags work?
+
+Roblox introduced a server-side whitelist for FastFlags. Many previously working flags are now silently ignored. This is a Roblox-side change, not an AppleBlox bug.
+
+### AppleBlox launches without my mods or flags
+
+1. **Try relaunching Roblox** - This commonly happens if Roblox has an update and needs to be configured first.
+2. If the above doesn't work, try toggling the flags/mods on and off.
 
 ## Mods
 
-### Are Bloxstrap mods compatible?
+### Crash error with loading mods
 
-Yes! Bloxstrap and AppleBlox use the same mod system. Any Bloxstrap mod works in AppleBlox.
+If you're experiencing crashes when loading mods in the latest version, this is an issue with AppleBlox attempting to restore Roblox's Original Resources.
 
-### Can mods get me banned?
+**Solution:** Simply reinstall Roblox by running the Roblox installer in the app again.
 
-Client-side visual mods are generally safe. They don't modify game files or provide advantages. Use at your own discretion.
+### How to install mods
 
-### Why aren't my mods showing in-game?
+Installing mods in AppleBlox works essentially the same as in Bloxstrap:
 
-Check:
-1. "Enable Mods" is ON
-2. Individual mod toggle is ON
-3. Roblox has been restarted after enabling
-4. Mod file structure is correct
+1. Extract the mod file (`.zip` or `.7z`).
+2. If the extraction creates a `content` folder or any other folder from the compressed file, place it in another folder named after the mod (or any name you prefer).
+3. Put this folder into the AppleBlox mods folder, which can be accessed by:
+   - Going to "Mods" in the AppleBlox sidebar
+   - Clicking "Open Folder"
 
-### Can I use multiple mods at once?
+## Other
 
-Yes! Enable as many as you want. If they conflict (modify same file), later mods (alphabetically) override earlier ones.
+### Region selection isn't finding servers in my preferred region
 
-### How do I remove a mod?
+Not all games have servers in every region. Server availability depends on the game's popularity and Roblox's infrastructure. If no server is found in your preferred region, AppleBlox falls back to Roblox's default assignment.
 
-Either disable the toggle, or delete the folder from `~/Library/Application Support/AppleBlox/mods/`
+### How can I join private servers / Roblox URLs with AppleBlox?
 
-### Do mods affect performance?
-
-Usually no, but extremely high-resolution textures might. Monitor with Activity Monitor if concerned.
-
-## Technical
-
-### Where are my settings stored?
-
-`~/Library/Application Support/AppleBlox/config/` (JSON files)
-
-### How do I reset AppleBlox to default?
-
-Delete: `~/Library/Application Support/AppleBlox/` and restart app.
-
-### Can I use custom data directory?
-
-Yes, for advanced use cases:
-
-```bash
-export APPLEBLOX_DATA_DIR="/custom/path"
-```
-
-### How do I view logs?
-
-Misc panel > View Logs, or navigate to: `~/Library/Application Support/AppleBlox/logs/`
-
-### How do I backup my settings?
-
-Misc panel > Export Settings (creates ZIP), or manually copy the AppleBlox folder.
-
-## Troubleshooting
-
-### Roblox crashes on launch
-
-Try:
-1. Disable mods
-2. Reset FastFlags (delete ClientAppSettings.json)
-3. Reinstall Roblox
-4. Check logs for errors
-
-### Discord RPC not showing
-
-Ensure:
-1. Discord is running before Roblox
-2. RPC enabled in Integrations panel
-3. Discord activity privacy enabled
-4. Restart both apps
-
-### Mods not applying
-
-Verify:
-1. Mods enabled in panel
-2. Folder structure mirrors Roblox's structure
-3. Roblox restarted after enabling
-4. Check logs for mod errors
+You need to enable the **Delegate Launching** setting inside the **Behavior** tab in AppleBlox. Without this, clicking Roblox links will open Roblox directly and bypass AppleBlox. See [Delegate Launching](/guide/launching#delegate-launching) for details.
 
 ### Multi-instance not working
 
-1. Make sure toggle is enabled
-2. "New Instance" button appears when enabled
-3. Each instance needs time to start
-4. Check system resources (RAM/CPU)
+Multi-instance is very buggy, unsupported, and no longer actively maintained. Roblox has been cracking down on multi-instance methods, so it may not work. Refer to the [AppleBlox Discord server](https://discord.gg/appleblox) for community-sourced alternatives. No official support is provided for these methods.
 
-## Community
+### Delegate launching isn't intercepting Roblox links
 
-### How do I report a bug?
-
-GitHub Issues with bug report template, or Discord #bug-reports channel.
-
-### Can I request features?
-
-Yes! GitHub Issues with feature request template, or discuss in Discord #suggestions.
-
-### How can I contribute?
-
-Fork on GitHub, make changes, submit pull request. See [Contributing](/community/contributing) section.
-
-### Where can I get help?
-
-Discord server (fastest), GitHub issues, or check this documentation.
-
-### Can I donate to support development?
-
-AppleBlox is free and doesn't accept donations. Best support is using it, reporting bugs, and spreading the word!
-
-## Still Have Questions?
-
-- [Discord Community](https://appleblox.com/discord)
-- [GitHub Issues](https://github.com/AppleBlox/appleblox/issues)
-- [Full Documentation](/guide/introduction)
+Make sure **Delegate launching to AppleBlox** is enabled under **Behavior**. If another app (like Roblox itself) re-registered as the URL handler, toggling the setting off and on again will re-register AppleBlox.

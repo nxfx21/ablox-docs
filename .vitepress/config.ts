@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'AppleBlox',
-  description: 'Lightweight and fast Roblox launcher for macOS',
+  description: 'Documentation for AppleBlox, the macOS Roblox launcher',
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { name: 'theme-color', content: '#f43f5e' }],
@@ -13,56 +13,48 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: '/logo.png',
+    siteTitle: 'AppleBlox Docs',
     nav: [
-      { text: 'Guide', link: '/guide/introduction' },
-      { text: 'Mods', link: '/mods/introduction' },
+      { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Reference', link: '/reference/file-locations' },
+      { text: 'Community', link: '/community/contributing' },
       {
-        text: 'v0.9.0',
+        text: 'Links',
         items: [
-          { text: 'Changelog', link: '/changelog' },
-          { text: 'Contributing', link: '/community/contributing' }
+          { text: 'Website', link: 'https://appleblox.com' },
+          { text: 'Download', link: 'https://github.com/AppleBlox/appleblox/releases' },
+          { text: 'Discord', link: 'https://appleblox.com/discord' }
         ]
       }
     ],
     sidebar: [
       {
-        text: 'Getting Started',
+        text: 'Guide',
         items: [
-          { text: 'Introduction', link: '/guide/introduction' },
-          { text: 'Installation', link: '/guide/installation' },
+          { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Quickplay', link: '/guide/quickplay' },
+          { text: 'Account & Region', link: '/guide/account' },
+          { text: 'Launching Roblox', link: '/guide/launching' },
+          { text: 'Mods', link: '/guide/mods' },
+          { text: 'FastFlags', link: '/guide/fastflags' },
+          { text: 'Integrations', link: '/guide/integrations' },
+          { text: 'Multi-Instance', link: '/guide/multi-instance' },
+          { text: 'Appearance', link: '/guide/appearance' },
+          { text: 'Misc & System', link: '/guide/misc' },
           { text: 'FAQ', link: '/guide/faq' }
-        ]
-      },
-      {
-        text: 'Features',
-        items: [
-          { text: 'Discord Integration', link: '/guide/features/integrations' },
-          { text: 'Roblox Behavior', link: '/guide/features/behavior' },
-          { text: 'Engine & Graphics', link: '/guide/features/engine' },
-          { text: 'Appearance', link: '/guide/features/appearance' }
-        ]
-      },
-      {
-        text: 'Mods',
-        items: [
-          { text: 'Introduction', link: '/mods/introduction' },
-          { text: 'Installing Mods', link: '/mods/installing' },
-          { text: 'Creating Mods', link: '/mods/creating' }
         ]
       },
       {
         text: 'Reference',
         items: [
-          { text: 'File Locations', link: '/reference/file-locations' },
-          { text: 'Settings', link: '/reference/settings' }
+          { text: 'File Locations', link: '/reference/file-locations' }
         ]
       },
       {
         text: 'Community',
         items: [
-          { text: 'Credits', link: '/community/credits' },
-          { text: 'Contributing', link: '/community/contributing' }
+          { text: 'Contributing', link: '/community/contributing' },
+          { text: 'Credits', link: '/community/credits' }
         ]
       }
     ],
@@ -96,6 +88,6 @@ export default defineConfig({
     },
     lineNumbers: true
   },
-  srcExclude: ['**/DOCUMENTATION.md'],
+  srcExclude: ['**/DOCS.md', '**/DOCUMENTATION.md'],
   ignoreDeadLinks: true
 })

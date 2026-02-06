@@ -1,189 +1,54 @@
 # Contributing
 
-Want to help make AppleBlox better? We'd love your contribution!
+Want to help make AppleBlox better? Here's how you can contribute.
 
-## Ways to Contribute
-
-1. **Report Bugs** - Found an issue? Let us know!
-2. **Suggest Features** - Have ideas? We want to hear them!
-3. **Write Code** - Submit pull requests
-4. **Improve Docs** - Help make documentation better
-5. **Share Mods** - Create and share custom mods
-6. **Help Others** - Answer questions in Discord
-
-## Reporting Bugs
-
-### Before Reporting
+## Report Bugs
 
 1. Check if already reported: [GitHub Issues](https://github.com/AppleBlox/appleblox/issues)
-2. Try latest version - bug may be fixed
-3. Search Discord - may be known issue
+2. Try the latest version first. The bug may already be fixed.
+3. Open a new issue with the **Bug Report** template.
+4. Include your AppleBlox version, macOS version, and steps to reproduce.
+5. Attach logs from **Misc > View Logs** if relevant.
 
-### How to Report
+## Suggest Features
 
-1. Go to [GitHub Issues](https://github.com/AppleBlox/appleblox/issues)
-2. Click "New Issue"
-3. Choose "Bug Report" template
-4. Fill out the template completely
-
-### Good Bug Report Example
-
-```markdown
-## Bug Description
-Discord RPC doesn't update when switching games
-
-## Steps to Reproduce
-1. Enable Discord RPC in Integrations panel
-2. Launch Roblox through AppleBlox
-3. Join Game A
-4. Discord shows "Playing Game A" ✓
-5. Leave and join Game B
-6. Discord still shows "Playing Game A" ✗
-
-## Expected Behavior
-Discord should update to "Playing Game B"
-
-## Environment
-- AppleBlox: v0.9.0-dev.27
-- macOS: 13.2 (Ventura)
-- Mac: MacBook Pro M1 2021
-
-## Logs
-Attached: abloxconfig-0.9.0-dev.27-20240115.zip
-```
-
-## Feature Requests
-
-### Before Requesting
-
-1. Check existing requests
-2. Discuss in Discord first
-3. Consider if it fits AppleBlox's scope
-
-### How to Request
-
-1. New Issue > Feature Request
-2. Describe the feature clearly
-3. Explain why it's useful
-4. Provide examples or mockups
+1. Check existing feature requests on [GitHub Issues](https://github.com/AppleBlox/appleblox/issues).
+2. Open a new issue with the **Feature Request** template.
+3. Describe the feature, why it's useful, and provide examples or mockups if possible.
 
 ## Code Contributions
 
-### Getting Started
-
-1. **Fork Repository** on GitHub
-2. **Clone Your Fork:**
+1. **Fork** the repository on GitHub.
+2. **Clone** your fork:
    ```bash
    git clone https://github.com/YourUsername/appleblox.git
    cd appleblox
    ```
-
-3. **Install Dependencies:**
+3. **Install dependencies:**
    ```bash
    bun install
    ```
-
-4. **Create Branch:**
+4. **Create a branch:**
    ```bash
    git checkout -b feature/your-feature-name
-   # or
-   git checkout -b fix/bug-description
    ```
-
-### Development
-
-1. **Run Dev Server:**
+5. **Make your changes** following existing code style.
+6. **Commit** using conventional commits:
    ```bash
-   bun run dev
+   git commit -m "Add icon pack support"
    ```
+7. **Push** and open a pull request.
 
-2. **Make Changes:**
-   - Write clean, documented code
-   - Follow existing code style
-   - Add comments where needed
+## Improve Documentation
 
-3. **Test Changes:**
-   ```bash
-   bun test                # Run unit tests
-   bun run build:arm64     # Test build
-   ```
+- Fix typos or errors. Edit docs directly on GitHub.
+- Add examples, code snippets, or configuration guides.
+- Documentation files are in the `docs/` directory, written in Markdown, built with VitePress.
 
-4. **Commit:**
-   ```bash
-   git add .
-   git commit -m "feat: add icon pack support"
-   ```
+## Community
 
-   **Commit format:** `type: description`
-   - `feat:` New feature
-   - `fix:` Bug fix
-   - `docs:` Documentation
-   - `style:` Code formatting
-   - `refactor:` Code restructuring
-   - `test:` Tests
-   - `chore:` Maintenance
+- Answer questions in [Discord](https://appleblox.com/discord).
+- Share mods and configurations.
+- Create tutorials or videos.
 
-### Submitting Pull Request
-
-1. **Push to Your Fork:**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-2. **Open Pull Request** on GitHub
-3. Fill out PR template
-4. Wait for review
-
-### Code Guidelines
-
-- **TypeScript:** Use types, avoid `any`
-- **Comments:** Explain complex logic
-- **Formatting:** Run `bun run format` before committing
-- **Testing:** Add tests for new features
-- **Documentation:** Update docs if needed
-
-## Documentation Improvements
-
-### How to Help
-
-1. **Fix Typos/Errors** - Edit docs directly on GitHub
-2. **Add Examples** - Code snippets, configurations
-3. **Write Tutorials** - Beginner guides, advanced techniques
-4. **Translate** - Help translate docs to other languages
-
-### Documentation Files
-
-- Located in `docs/` directory
-- Written in Markdown
-- Built with VitePress
-
-## Community Support
-
-### Help Others
-
-- Answer questions in Discord
-- Share your knowledge
-- Create tutorials or videos
-- Share mods and configurations
-
-### Community Guidelines
-
-- Be respectful and kind
-- Help others learn
-- Share knowledge freely
-- Give credit where due
-
-## Recognition
-
-Contributors are recognized in:
-- [Credits Page](/community/credits)
-- GitHub contributors list
-- Release notes (for significant contributions)
-
-## Questions?
-
-- [Discord Community](https://appleblox.com/discord)
-- [GitHub Discussions](https://github.com/AppleBlox/appleblox/discussions)
-- [Community Resources](/community/resources)
-
-Thank you for contributing to AppleBlox! 🎉
+Contributors are recognized on the [Credits](/community/credits) page.
