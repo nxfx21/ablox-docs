@@ -70,7 +70,7 @@ export default defineConfig({
       provider: 'local'
     },
     editLink: {
-      pattern: 'https://github.com/AppleBlox/appleblox/edit/main/docs/:path',
+      pattern: 'https://github.com/AppleBlox/docs/edit/main/:path',
       text: 'Edit this page on GitHub'
     },
     lastUpdated: {
